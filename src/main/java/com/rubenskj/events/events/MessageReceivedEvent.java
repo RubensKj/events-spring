@@ -1,10 +1,10 @@
 package com.rubenskj.events.events;
 
+import com.rubenskj.events.eventconfiguration.Event;
 import com.rubenskj.events.models.Chat;
 import com.rubenskj.events.models.Message;
-import org.springframework.context.ApplicationEvent;
 
-public class MessageReceivedEvent extends ApplicationEvent {
+public class MessageReceivedEvent extends Event {
 
     private Chat chat;
     private Message message;
