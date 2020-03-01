@@ -6,14 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MessageReceivedEventListener implements ListenerAdapter<MessageReceivedEvent> {
-    @Override
-    public void execute(MessageReceivedEvent event) {
-        System.out.println("execute works");
-        System.out.println("RECEBENDO MENSAGEM - " + event.getMessage().getTextContent());
-    }
 
     @Override
-    public void onFinally(MessageReceivedEvent event) {
-        System.out.println("Executed works");
+    public void execute(MessageReceivedEvent event) throws Exception {
+        System.out.println("This is a execution from MessageReceivedEvent");
+        System.out.print(event.getMessage().getUser() + ": ");
+        System.out.println(event.getMessage().getTextContent());
     }
 }

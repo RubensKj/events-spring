@@ -4,8 +4,13 @@ package com.rubenskj.events.eventconfiguration;
 public interface ListenerAdapter<E extends Event> extends IListener<E> {
 
     @Override
-    default void execute(E event) throws Exception {}
+    default void onInit(E event) throws Exception {
+    }
 
     @Override
-    void onFinally(E event) throws Exception;
+    void execute(E event) throws Exception;
+
+    @Override
+    default void onFinally(E event) throws Exception {
+    }
 }

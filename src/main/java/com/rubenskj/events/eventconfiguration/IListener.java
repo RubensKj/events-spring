@@ -8,6 +8,7 @@ public interface IListener<E extends Event> extends ApplicationListener<E> {
     @Override
     default void onApplicationEvent(E event) {
         try {
+            this.onInit(event);
             this.execute(event);
             this.onFinally(event);
         } catch (Exception e) {
@@ -15,8 +16,11 @@ public interface IListener<E extends Event> extends ApplicationListener<E> {
         }
     }
 
-    default void execute(E event) throws Exception {
+    default void onInit(E event) throws Exception {
     }
 
-    void onFinally(E event) throws Exception;
+    void execute(E event) throws Exception;
+
+    default void onFinally(E event) throws Exception {
+    }
 }
